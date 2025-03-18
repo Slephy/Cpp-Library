@@ -1,3 +1,4 @@
+#pragma once
 #include <vector>
 // 添え字に下駄をはかせたvector
 // 'a'や'A'などをゼロとして扱うことを想定している
