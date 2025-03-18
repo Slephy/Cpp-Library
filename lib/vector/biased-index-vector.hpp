@@ -9,19 +9,18 @@ public:
     vector<T>::const_reference operator[](int i) const { return vector<T>::operator[](i - BIAS); }
 };
 
-template <class T, long long BIAS = 0>
-inline Bvector<Bvector<T, BIAS>, BIAS> Bvector2(size_t i, size_t j, const T &init = T()) {
-    return Bvector<Bvector<T, BIAS>, BIAS>(i, Bvector<T, BIAS>(j, init));
+template <class T, long long BIAS = 0> using Bvector2_t = Bvector<Bvector<T, BIAS>, BIAS>;
+template <class T, long long BIAS = 0> using Bvector3_t = Bvector<Bvector<Bvector<T, BIAS>, BIAS>, BIAS>;
+template <class T, long long BIAS = 0> using Bvector4_t = Bvector<Bvector<Bvector<Bvector<T, BIAS>, BIAS>, BIAS>, BIAS>;
+
+template <class T, long long BIAS = 0> inline Bvector2_t<T, BIAS> Bvector2(size_t i, size_t j, const T &init = T()) {
+    return Bvector2_t<T, BIAS>(i, Bvector<T, BIAS>(j, init));
 }
 template <class T, long long BIAS = 0>
-inline Bvector<Bvector<Bvector<T, BIAS>, BIAS>, BIAS> Bvector3(size_t i, size_t j, size_t k, const T &init = T()) {
-    return Bvector<Bvector<Bvector<T, BIAS>, BIAS>, BIAS>(
-        i, Bvector<Bvector<T, BIAS>, BIAS>(j, Bvector<T, BIAS>(k, init)));
+inline Bvector3_t<T, BIAS> Bvector3(size_t i, size_t j, size_t k, const T &init = T()) {
+    return Bvector3_t<T, BIAS>(i, Bvector<Bvector<T, BIAS>, BIAS>(j, Bvector<T, BIAS>(k, init)));
 }
 template <class T, long long BIAS = 0>
-inline Bvector<Bvector<Bvector<Bvector<T, BIAS>, BIAS>, BIAS>, BIAS> Bvector4(size_t i, size_t j, size_t k, size_t l,
-                                                                              const T &init = T()) {
-    return Bvector<Bvector<Bvector<Bvector<T, BIAS>, BIAS>, BIAS>, BIAS>(
-        i, Bvector<Bvector<Bvector<T, BIAS>, BIAS>, BIAS>(
-               j, Bvector<Bvector<T, BIAS>, BIAS>(k, Bvector<T, BIAS>(l, init))));
+inline Bvector4_t<T, BIAS> Bvector4(size_t i, size_t j, size_t k, size_t l, const T &init = T()) {
+    return Bvector4_t<T, BIAS>(i, Bvector3_t<T, BIAS>(j, Bvector2_t<T, BIAS>(k, Bvector<T, BIAS>(l, init))));
 }
