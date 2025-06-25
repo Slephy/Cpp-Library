@@ -5,27 +5,33 @@ template <class mint> class Combination {
     int sz;
 
 public:
-    mint COM(int n, int k) {
+    Combination() : fac(), finv(), inv(), sz(0) {}
+    Combination(int n) : fac(n + 1), finv(n + 1), inv(n + 1), sz(0) {
+        update_sz(n + 1);
+    }
+
+    mint C(int n, int k) {
         update_sz(n + 1);
         if(n < k) return 0;
         if(n < 0 || k < 0) return 0;
         return fac[n] * finv[k] * finv[n - k];
     }
 
-    mint PER(int n, int k) {
+    mint P(int n, int k) {
         update_sz(n + 1);
         if(n < k) return 0;
         if(n < 0 || k < 0) return 0;
         return fac[n] * finv[n - k];
     }
 
-    mint HCOM(int n, int k) {
+    mint H(int n, int k) {
         if(n == 0 && k == 0) return 1;
-        return COM(n + k - 1, k);
+        return C(n + k - 1, k);
     }
 
     // O(k), k <= N_MAX
-    mint COM_small_k(int n, int k) {
+    mint C_naive(int n, int k) {
+        update_sz(k + 1);
         if(n < k) return 0;
         if(n < 0 || k < 0) return 0;
         mint ret = 1;
