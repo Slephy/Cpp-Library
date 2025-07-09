@@ -1,4 +1,6 @@
 #pragma once
+#include "../core/core.hpp"
+
 enum class TernalySearchDirection {
     Downward,
     Upward,

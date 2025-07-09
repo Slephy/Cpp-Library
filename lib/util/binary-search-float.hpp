@@ -1,4 +1,6 @@
 #pragma once
+#include "../core/core.hpp"
+
 template<class Judgement>
 double binary_search_float(double ok, double ng, Judgement judge, double tolerance, bool considerRelativeError = true){
     auto need_continue = [&]() -> bool {

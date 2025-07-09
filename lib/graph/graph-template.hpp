@@ -1,5 +1,5 @@
 #pragma once
-#include <concepts>
+#include "../core/core.hpp"
 
 template <typename T>
 concept GraphConcept = std::convertible_to<typename T::value_type::value_type, int>;

@@ -1,4 +1,5 @@
 #pragma once
+#include "../core/core.hpp"
 #include "graph-template.hpp"
 
 template <GraphConcept Graph>

@@ -1,7 +1,5 @@
 #pragma once
-#include <string>
-#include <vector>
-using namespace std;
+#include "../core/core.hpp"
 
 enum class ManacherType {
     even,

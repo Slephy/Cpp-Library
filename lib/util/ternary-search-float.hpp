@@ -1,4 +1,6 @@
 #pragma once
+#include "../core/core.hpp"
+
 // 三分探索
 // 狭義単調性を持つ単峰関数について最小値を取るときの引数を求める
 // @need left <= right

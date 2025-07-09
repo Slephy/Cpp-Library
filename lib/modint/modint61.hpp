@@ -1,7 +1,5 @@
 #pragma once
-#include <cassert>
-#include <iostream>
-using namespace std;
+#include "../core/core.hpp"
 
 struct modint61 {
     using mint = modint61;

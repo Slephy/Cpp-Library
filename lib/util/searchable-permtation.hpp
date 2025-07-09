@@ -1,9 +1,6 @@
 #pragma once
-#include <cassert>
-#include <iostream>
-#include <vector>
-#include <numeric>
-using namespace std;
+#include "../core/core.hpp"
+
 // 逆引き可能な順列
 // 0 から n-1 までの順列を格納する
 class SearchablePermutation{

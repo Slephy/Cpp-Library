@@ -1,8 +1,7 @@
 #pragma once
+#include "../core/core.hpp"
 
-using namespace std;
 #include <atcoder/modint>
-#include <iostream>
 namespace atcoder {
 template <int m> istream &operator>>(istream &i, static_modint<m, (void *)nullptr> &a) {
     long long v;

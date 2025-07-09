@@ -1,7 +1,5 @@
 #pragma once
-#include <string>
-#include <vector>
-using namespace std;
+#include "../core/core.hpp"
 
 template <typename Iterator> vector<int> z_algorithm(const Iterator begin, const Iterator end) {
     int n = end - begin;

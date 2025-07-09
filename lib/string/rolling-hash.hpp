@@ -1,8 +1,5 @@
 #pragma once
-#include <cassert>
-#include <string>
-#include <vector>
-using namespace std;
+#include "../core/core.hpp"
 
 template <class mint> class RollingHash {
     using value_type = decltype(mint().val());

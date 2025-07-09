@@ -1,4 +1,5 @@
 #pragma once
+#include "../core/core.hpp"
 #include "graph-template.hpp"
 
 // 無向グラフ ただし連結グラフでなくてもよい

@@ -1,13 +1,8 @@
 #pragma once
-#include <deque>
-#include <map>
-#include <set>
-#include <string>
-#include <vector>
-using namespace std;
+#include "../core/core.hpp"
 
-string ELM_SEP = " ", VEC_SEP = "\n";
-string PT_SEP = " ";
+// string ELM_SEP = " ", VEC_SEP = "\n";
+const string PT_SEP = " ";
 // prototype declaration
 template <class T> istream &operator>>(istream &i, vector<T> &A);
 template <class T> ostream &operator<<(ostream &o, const vector<T> &A);

@@ -1,9 +1,6 @@
 #pragma once
-#include <cassert>
-#include <iostream>
-
+#include "../core/core.hpp"
 #include "../util/i128-io.hpp"
-using namespace std;
 
 struct modint107 {
     using mint = modint107;

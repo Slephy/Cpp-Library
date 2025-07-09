@@ -1,7 +1,5 @@
 #pragma once
-#include <cassert>
-#include <iostream>
-using namespace std;
+#include "../core/core.hpp"
 
 // from: https://kenkoooo.hatenablog.com/entry/2016/11/30/163533
 istream &operator>>(istream &is, __int128 &v) {

@@ -1,4 +1,5 @@
 #pragma once
+#include "../core/core.hpp"
 
 template <class Judgement> long long binary_search_integer(long long ok, long long ng, Judgement judge) {
     auto need_continue = [&]() -> bool {
