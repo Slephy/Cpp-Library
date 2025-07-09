@@ -45,6 +45,7 @@ public:
 private:
     void update_sz(int new_sz) {
         if(sz >= new_sz) return;
+        if(new_sz < 2) new_sz = 2;
         fac.resize(new_sz);
         finv.resize(new_sz);
         inv.resize(new_sz);
