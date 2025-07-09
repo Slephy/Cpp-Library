@@ -1,0 +1,21 @@
+{
+    "configurations": [
+        {
+            "name": "WSL",
+            "intelliSenseMode": "linux-gcc-x64",
+            "compilerPath": "/usr/bin/g++",
+            "includePath": [
+                "/usr/local/include"
+            ],
+            "defines": [
+                "USE_RIME",
+                "DEBUG",
+                "LOCAL",
+                "INTERACTIVE_LOCAL"
+            ],
+            "cStandard": "c11",
+            "cppStandard": "c++20"
+        }
+    ],
+    "version": 4
+}
