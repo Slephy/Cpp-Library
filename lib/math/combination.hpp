@@ -30,7 +30,7 @@ public:
         return C(n + k - 1, k);
     }
 
-    // O(k), k <= N_MAX
+    // O(k)
     mint C_naive(int n, int k) {
         update_sz(k + 1);
         if(n < k) return 0;
