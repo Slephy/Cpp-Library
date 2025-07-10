@@ -2,6 +2,8 @@
     "files.associations": {
         "*.css": "tailwindcss",
         "*.sage": "python",
-        "iterator": "cpp"
+        "iterator": "cpp",
+        "string": "cpp",
+        "format": "cpp"
     }
 }

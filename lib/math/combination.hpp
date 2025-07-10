@@ -7,9 +7,7 @@ template <class mint> class Combination {
 
 public:
     Combination() : fac(), finv(), inv(), sz(0) {}
-    Combination(int n) : fac(n + 1), finv(n + 1), inv(n + 1), sz(0) {
-        update_sz(n + 1);
-    }
+    Combination(int n) : fac(n + 1), finv(n + 1), inv(n + 1), sz(0) { update_sz(n + 1); }
 
     mint C(int n, int k) {
         update_sz(n + 1);
