@@ -34,11 +34,11 @@ template <class T> vector<T> &operator--(vector<T> &A, int) {
 }
 template <class T, class U> bool chmax(T &a, const U &b) { return ((a < b) ? (a = b, true) : false); }
 template <class T, class U> bool chmin(T &a, const U &b) { return ((a > b) ? (a = b, true) : false); }
-ll floor(ll a, ll b) {
+ll floor_div(ll a, ll b) {
     if(b < 0) a = -a, b = -b;
     return (a >= 0) ? a / b : (a + 1) / b - 1;
 }
-ll ceil(ll a, ll b) {
+ll ceil_div(ll a, ll b) {
     if(b < 0) a = -a, b = -b;
     return (a > 0) ? (a - 1) / b + 1 : a / b;
 }
