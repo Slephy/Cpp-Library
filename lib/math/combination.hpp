@@ -1,6 +1,41 @@
 #pragma once
 #include "../core/core.hpp"
 
+template <floating_point Float> class Combination {
+    Combination() {}
+    Combination(int n) {}
+
+    Float C(int n, int k) {
+        if(n < k) return 0;
+        if(n < 0 || k < 0) return 0;
+
+        if(k > n - k) k = n - k;
+
+        Float ret = 1.0;
+        for(int i = 1; i <= k; ++i) {
+            ret *= Float(n - i + 1) / Float(i);
+        }
+        return ret;
+    }
+
+    Float P(int n, int k) {
+        if(n < k) return 0;
+        if(n < 0 || k < 0) return 0;
+        Float ret = 1.0;
+        for(int i = 0; i < k; ++i) {
+            ret *= Float(n - i);
+        }
+        return ret;
+    }
+
+    Float H(int n, int k) {
+        if(n == 0 && k == 0) return 1;
+        return C(n + k - 1, k);
+    }
+
+    Float C_naive(int n, int k) { return C(n, k); }
+};
+
 template <class mint> class Combination {
     vector<mint> fac, finv, inv;
     int sz;
