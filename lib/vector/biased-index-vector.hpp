@@ -1,5 +1,5 @@
 #pragma once
-#include <vector>
+#include "../core/core.hpp"
 // 添え字に下駄をはかせたvector
 // 'a'や'A'などをゼロとして扱うことを想定している
 template <class T, long long BIAS = 0> class Bvector : public vector<T> {

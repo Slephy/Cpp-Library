@@ -1,5 +1,5 @@
 #pragma once
-#include <vector>
+#include "../core/core.hpp"
 // 負の添え字に対応したvector
 // 負の添え字の仕様はPythonのリストと同様で、その他は通常のvectorと同じように使える
 template <class T> class Nvector : public vector<T> {
