@@ -1,14 +1,14 @@
 #pragma once
 #include "../core/core.hpp"
 
-#ifdef LOCAL
-template <floating_point Float> class Combination {
+namespace slephy_combination {
+template <class Float> class Combination_Float {
     vector<Float> fac, finv, inv;
     const int MAX_SZ = 150;
 
 public:
-    Combination() { init_sz(MAX_SZ); }
-    Combination(int n) { init_sz(min(n + 1, MAX_SZ)); }
+    Combination_Float() { init_sz(MAX_SZ); }
+    Combination_Float(int n) { init_sz(min(n + 1, MAX_SZ)); }
 
     // O(k)
     Float C(ll n, ll k) {
@@ -60,18 +60,14 @@ private:
         }
     }
 };
-#endif
 
-template <class mint>
-    requires(!std::floating_point<mint>)
-// requires (!std::is_floating_point_v<mint>)
-class Combination {
+template <class mint> class Combination_Modint {
     vector<mint> fac, finv, inv;
     int sz;
 
 public:
-    Combination() : fac(), finv(), inv(), sz(0) {}
-    Combination(int n) : fac(n + 1), finv(n + 1), inv(n + 1), sz(0) { update_sz(n + 1); }
+    Combination_Modint() : fac(), finv(), inv(), sz(0) {}
+    Combination_Modint(int n) : fac(n + 1), finv(n + 1), inv(n + 1), sz(0) { update_sz(n + 1); }
 
     mint C(int n, int k) {
         update_sz(n + 1);
@@ -126,3 +122,8 @@ private:
         sz = new_sz;
     }
 };
+};  // namespace slephy_combination
+
+template <class T>
+using Combination = conditional_t<std::floating_point<T>, slephy_combination::Combination_Float<T>,
+                                  slephy_combination::Combination_Modint<T>>;
