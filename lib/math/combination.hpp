@@ -1,11 +1,17 @@
 #pragma once
 #include "../core/core.hpp"
 
+#ifdef LOCAL
 template <floating_point Float> class Combination {
-    Combination() {}
-    Combination(int n) {}
+    vector<Float> fac, finv, inv;
+    const int MAX_SZ = 150;
 
-    Float C(int n, int k) {
+public:
+    Combination() { init_sz(MAX_SZ); }
+    Combination(int n) { init_sz(min(n + 1, MAX_SZ)); }
+
+    // O(k)
+    Float C(ll n, ll k) {
         if(n < k) return 0;
         if(n < 0 || k < 0) return 0;
 
@@ -18,6 +24,7 @@ template <floating_point Float> class Combination {
         return ret;
     }
 
+    // O(k)
     Float P(int n, int k) {
         if(n < k) return 0;
         if(n < 0 || k < 0) return 0;
@@ -28,15 +35,37 @@ template <floating_point Float> class Combination {
         return ret;
     }
 
+    // O(k)
     Float H(int n, int k) {
         if(n == 0 && k == 0) return 1;
         return C(n + k - 1, k);
     }
 
+    // O(k)
     Float C_naive(int n, int k) { return C(n, k); }
-};
 
-template <class mint> class Combination {
+private:
+    void init_sz(int sz) {
+        if(sz < 2) sz = 2;
+        fac.resize(sz);
+        finv.resize(sz);
+        inv.resize(sz);
+        fac[0] = fac[1] = 1.0;
+        finv[0] = finv[1] = 1.0;
+        inv[1] = 1.0;
+        for(int i = 2; i < sz; ++i) {
+            fac[i] = fac[i - 1] * i;
+            inv[i] = 1.0 / i;
+            finv[i] = finv[i - 1] * inv[i];
+        }
+    }
+};
+#endif
+
+template <class mint>
+    requires(!std::floating_point<mint>)
+// requires (!std::is_floating_point_v<mint>)
+class Combination {
     vector<mint> fac, finv, inv;
     int sz;
 
