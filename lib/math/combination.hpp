@@ -3,7 +3,7 @@
 
 namespace slephy_combination {
 template <class Float> class Combination_Float {
-    vector<Float> fac, finv, inv;
+    vector<Float> fac_, finv_, inv_;
     const int MAX_SZ = 150;
 
 public:
@@ -25,7 +25,7 @@ public:
     }
 
     // O(k)
-    Float P(int n, int k) {
+    Float P(ll n, ll k) {
         if(n < k) return 0;
         if(n < 0 || k < 0) return 0;
         Float ret = 1.0;
@@ -36,88 +36,106 @@ public:
     }
 
     // O(k)
-    Float H(int n, int k) {
+    Float H(ll n, ll k) {
         if(n == 0 && k == 0) return 1;
         return C(n + k - 1, k);
     }
 
     // O(k)
-    Float C_naive(int n, int k) { return C(n, k); }
+    Float C_naive(ll n, ll k) { return C(n, k); }
+
+    Float fac(ll n) { return fac_[n]; }
+    Float finv(ll n) { return finv_[n]; }
+    Float inv(ll n) { return inv_[n]; }
+
 
 private:
-    void init_sz(int sz) {
+    void init_sz(ll sz) {
         if(sz < 2) sz = 2;
-        fac.resize(sz);
-        finv.resize(sz);
-        inv.resize(sz);
-        fac[0] = fac[1] = 1.0;
-        finv[0] = finv[1] = 1.0;
-        inv[1] = 1.0;
-        for(int i = 2; i < sz; ++i) {
-            fac[i] = fac[i - 1] * i;
-            inv[i] = 1.0 / i;
-            finv[i] = finv[i - 1] * inv[i];
+        fac_.resize(sz);
+        finv_.resize(sz);
+        inv_.resize(sz);
+        fac_[0] = fac_[1] = 1.0;
+        finv_[0] = finv_[1] = 1.0;
+        inv_[1] = 1.0;
+        for(ll i = 2; i < sz; ++i) {
+            fac_[i] = fac_[i - 1] * i;
+            inv_[i] = 1.0 / i;
+            finv_[i] = finv_[i - 1] * inv_[i];
         }
     }
 };
 
 template <class mint> class Combination_Modint {
-    vector<mint> fac, finv, inv;
+    vector<mint> fac_, finv_, inv_;
     int sz;
 
 public:
-    Combination_Modint() : fac(), finv(), inv(), sz(0) {}
-    Combination_Modint(int n) : fac(n + 1), finv(n + 1), inv(n + 1), sz(0) { update_sz(n + 1); }
+    Combination_Modint() : fac_(), finv_(), inv_(), sz(0) {}
+    Combination_Modint(int n) : fac_(n + 1), finv_(n + 1), inv_(n + 1), sz(0) { update_sz(n + 1); }
 
-    mint C(int n, int k) {
+    mint C(ll n, ll k) {
         update_sz(n + 1);
         if(n < k) return 0;
         if(n < 0 || k < 0) return 0;
-        return fac[n] * finv[k] * finv[n - k];
+        return fac_[n] * finv_[k] * finv_[n - k];
     }
 
-    mint P(int n, int k) {
+    mint P(ll n, ll k) {
         update_sz(n + 1);
         if(n < k) return 0;
         if(n < 0 || k < 0) return 0;
-        return fac[n] * finv[n - k];
+        return fac_[n] * finv_[n - k];
     }
 
-    mint H(int n, int k) {
+    mint H(ll n, ll k) {
         if(n == 0 && k == 0) return 1;
         return C(n + k - 1, k);
     }
 
     // O(k)
-    mint C_naive(int n, int k) {
+    mint C_naive(ll n, ll k) {
         update_sz(k + 1);
         if(n < k) return 0;
         if(n < 0 || k < 0) return 0;
         mint ret = 1;
-        for(int i = 0; i < k; i++) {
+        for(ll i = 0; i < k; i++) {
             ret *= n - i;
-            ret *= inv[i + 1];
+            ret *= inv_[i + 1];
         }
         return ret;
     }
 
+    mint fac(ll n) {
+        update_sz(n + 1);
+        return fac_[n];
+    }
+    mint finv(ll n) {
+        update_sz(n + 1);
+        return finv_[n];
+    }
+    mint inv(ll n) {
+        update_sz(n + 1);
+        return inv_[n];
+    }
+
 private:
-    void update_sz(int new_sz) {
+    void update_sz(ll new_sz) {
         if(sz >= new_sz) return;
         if(new_sz < 2) new_sz = 2;
-        fac.resize(new_sz);
-        finv.resize(new_sz);
-        inv.resize(new_sz);
+        fac_.resize(new_sz);
+        finv_.resize(new_sz);
+        inv_.resize(new_sz);
         if(sz == 0) {
-            fac[0] = fac[1] = 1;
-            finv[0] = finv[1] = 1;
-            inv[1] = 1;
+            fac_[0] = fac_[1] = 1;
+            finv_[0] = finv_[1] = 1;
+            inv_[1] = 1;
             sz = 2;
         }
-        for(int i = sz; i < new_sz; i++) {
-            fac[i] = fac[i - 1] * i;
-            inv[i] = -(inv[mint::mod() % i] * (mint::mod() / i));
-            finv[i] = finv[i - 1] * inv[i];
+        for(ll i = sz; i < new_sz; i++) {
+            fac_[i] = fac_[i - 1] * i;
+            inv_[i] = -(inv_[mint::mod() % i] * (mint::mod() / i));
+            finv_[i] = finv_[i - 1] * inv_[i];
         }
         sz = new_sz;
     }
