@@ -15,13 +15,13 @@ template <class T> istream &operator>>(istream &i, vector<T> &A) {
     return i;
 }
 template <class T> ostream &operator<<(ostream &o, const vector<T> &A) {
-    int i = A.size();
-    for(const auto &I : A) o << I << (--i ? ELM_SEP : "");
+    int sz = A.size();
+    for(const auto &I : A) o << I << (--sz ? ELM_SEP : "");
     return o;
 }
 template <class T> ostream &operator<<(ostream &o, const vector<vector<T>> &A) {
-    int i = A.size();
-    for(const auto &I : A) o << I << (--i ? VEC_SEP : "");
+    int sz = A.size();
+    for(const auto &I : A) o << I << (--sz ? VEC_SEP : "");
     return o;
 }
 template <class T> vector<T> &operator++(vector<T> &A, int) {
@@ -42,7 +42,7 @@ ll ceil_div(ll a, ll b) {
     if(b < 0) a = -a, b = -b;
     return (a > 0) ? (a - 1) / b + 1 : a / b;
 }
-ll check_bit(unsigned long long val, unsigned long long digit) { return (val >> digit) & 1; }
+bool check_bit(ull val, ull digit) { return (val >> digit) & 1; }
 #ifdef DEBUG
 #include <cpp-dump/cpp-dump.hpp>
 #define dump(...) cpp_dump(__VA_ARGS__)
