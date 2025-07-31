@@ -7,4 +7,4 @@ concept HasPowMember = requires(T a, ll b) {
 };
 
 // 主に modint を想定
-template <HasPowMember T> T pow(T val, ll exp) { return val.pow(exp); }
+template <HasPowMember T> T power(T val, ll exp) { return val.pow(exp); }
