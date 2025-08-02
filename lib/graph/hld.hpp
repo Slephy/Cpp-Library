@@ -1,8 +1,8 @@
 #pragma once
+#include "../concepts/graph_concept.hpp"
 #include "../core/core.hpp"
-#include "graph-template.hpp"
 
-template <GraphConcept Graph> class HeavyLightDecomposition {
+template <AdjListGraph Graph> class HeavyLightDecomposition {
 private:
     Graph graph;
     int n;  // 頂点数

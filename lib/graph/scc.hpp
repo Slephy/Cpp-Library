@@ -1,6 +1,6 @@
 #pragma once
+#include "../concepts/graph_concept.hpp"
 #include "../core/core.hpp"
-#include "graph-template.hpp"
 
 namespace slephy_scc {
 enum class DAGType {
@@ -8,7 +8,7 @@ enum class DAGType {
     compress,  // 多重辺をひとつにまとめる
 };
 
-template <GraphConcept Graph> class SCC {
+template <AdjListGraph Graph> class SCC {
     const Graph &graph;
     Graph rgraph;
     int n;

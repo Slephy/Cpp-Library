@@ -1,8 +1,8 @@
 #pragma once
+#include "../concepts/graph_concept.hpp"
 #include "../core/core.hpp"
-#include "graph-template.hpp"
 
-template <GraphConcept Graph> class LCA {
+template <AdjListGraph Graph> class LCA {
     const Graph &graph;
     const int n;
     const int root;

@@ -1,8 +1,8 @@
 #pragma once
+#include "../concepts/graph_concept.hpp"
 #include "../core/core.hpp"
-#include "graph-template.hpp"
 
-template <GraphConcept Graph> class CentroidDecomposition {
+template <AdjListGraph Graph> class CentroidDecomposition {
     vector<bool> checked;
     vector<size_t> subtree_size;
     const Graph &graph;

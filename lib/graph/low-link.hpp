@@ -1,9 +1,9 @@
 #pragma once
+#include "../concepts/graph_concept.hpp"
 #include "../core/core.hpp"
-#include "graph-template.hpp"
 
 // 無向グラフ ただし連結グラフでなくてもよい
-template <GraphConcept Graph> class LowLink {
+template <AdjListGraph Graph> class LowLink {
     const Graph &G;
     vector<int> ord, low;
     vector<int> aps;
