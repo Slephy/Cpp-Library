@@ -1,15 +1,19 @@
 #pragma once
 #include "../core/core.hpp"
 
-ll mod_power(ll base, ll exponent, ll mod) {
-    if(exponent < 0) return 0;
-    ll ret = 1;
-    base %= mod;
-    while(exponent > 0) {
-        if(exponent & 1) ret = ret * base % mod;
-        base = base * base % mod;
-        exponent >>= 1;
+// return integer in [0, mod)
+template <integral T, integral U, integral S> T power(T val, U exp, S mod) {
+    if(exp < 0) throw invalid_argument("Negative exponent not supported.");
+    if(mod <= 1) throw invalid_argument("Modulus must be greater than 1.");
+
+    T result = 1;
+    val %= mod;
+    while(true) {
+        if(exp % 2 == 1) result = (result * val) % mod;
+        exp /= 2;
+        if(exp > 0) val = (val * val) % mod;
+        else break;
     }
-    if(ret < 0) ret += mod;
-    return ret;
+    if(result < 0) result += mod;
+    return result;
 }

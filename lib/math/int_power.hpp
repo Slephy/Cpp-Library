@@ -1,13 +1,19 @@
 #pragma once
+#include "../concepts/modint_concept.hpp"
 #include "../core/core.hpp"
 
-template <typename T> T power(T base, T exponent) {
-    assert(exponent >= 0);
-    T ret = 1;
-    while(exponent > 0) {
-        if(exponent & 1) ret = ret * base;
-        base = base * base;
-        exponent >>= 1;
+// integral
+template <class T, integral U>
+    requires(!IsModint<T> && integral<T>)
+T power(T val, U exp) {
+    if(exp < 0) throw invalid_argument("Negative exponent not supported for integral types.");
+
+    T result = 1;
+    while(true) {
+        if(exp % 2 == 1) result *= val;
+        exp /= 2;
+        if(exp > 0) val *= val;
+        else break;
     }
-    return ret;
+    return result;
 }
