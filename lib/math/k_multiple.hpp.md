@@ -39,35 +39,35 @@ data:
     \    }\n} init_cpp_dump;\n#else\n#define dump(...)\n#endif\n// ====================\
     \ \u3053\u3053\u307E\u3067\u30C6\u30F3\u30D7\u30EC ====================\n#line\
     \ 3 \"lib/math/k_multiple.hpp\"\n\nnamespace slephy_k_multiple {\n// O(1)\n//\
-    \ where 0 <= inf <= sup\nll _k_multiple_between(ll inf, ll sup, ll n) {\n    assert(0\
-    \ <= inf && inf <= sup);\n    return floor_div(sup, n) - floor_div(inf - 1, n);\n\
+    \ where 0 <= inf <= sup\nll _k_multiple_between(ll inf, ll sup, ll k) {\n    assert(0\
+    \ <= inf && inf <= sup);\n    return floor_div(sup, k) - floor_div(inf - 1, k);\n\
     }\n\n// O(1)\n// where inf <= sup\n// return the number of multiple of n betweem\
-    \ [inf, sup];\nll k_multiple_between(ll inf, ll sup, ll n) {\n    if(inf > sup)\
+    \ [inf, sup];\nll k_multiple_between(ll inf, ll sup, ll k) {\n    if(inf > sup)\
     \ return 0;\n    if(inf <= 0 && sup <= 0) return _k_multiple_between(-sup, -inf,\
-    \ n);\n    else if(inf <= 0 && sup >= 0) return _k_multiple_between(0, -inf, n)\
-    \ + _k_multiple_between(0, sup, n) - 1;\n    else return _k_multiple_between(inf,\
-    \ sup, n);\n}\n\n// O(1)\n// where inf <= sup\n// return the number of nk + r\
-    \ betweem [inf, sup] (where k is integer)\nll k_multiple_between(ll inf, ll sup,\
-    \ ll n, ll r) { return k_multiple_between(inf - r, sup - r, n); }\n\n};  // namespace\
+    \ k);\n    else if(inf <= 0 && sup >= 0) return _k_multiple_between(0, -inf, k)\
+    \ + _k_multiple_between(0, sup, k) - 1;\n    else return _k_multiple_between(inf,\
+    \ sup, k);\n}\n\n// O(1)\n// where inf <= sup\n// return the number of nk + r\
+    \ betweem [inf, sup] (where n is integer)\nll k_multiple_between(ll inf, ll sup,\
+    \ ll k, ll r) { return k_multiple_between(inf - r, sup - r, k); }\n\n};  // namespace\
     \ slephy_k_multiple\nusing slephy_k_multiple::k_multiple_between;\n"
   code: "#pragma once\n#include \"../core/core.hpp\"\n\nnamespace slephy_k_multiple\
     \ {\n// O(1)\n// where 0 <= inf <= sup\nll _k_multiple_between(ll inf, ll sup,\
-    \ ll n) {\n    assert(0 <= inf && inf <= sup);\n    return floor_div(sup, n) -\
-    \ floor_div(inf - 1, n);\n}\n\n// O(1)\n// where inf <= sup\n// return the number\
+    \ ll k) {\n    assert(0 <= inf && inf <= sup);\n    return floor_div(sup, k) -\
+    \ floor_div(inf - 1, k);\n}\n\n// O(1)\n// where inf <= sup\n// return the number\
     \ of multiple of n betweem [inf, sup];\nll k_multiple_between(ll inf, ll sup,\
-    \ ll n) {\n    if(inf > sup) return 0;\n    if(inf <= 0 && sup <= 0) return _k_multiple_between(-sup,\
-    \ -inf, n);\n    else if(inf <= 0 && sup >= 0) return _k_multiple_between(0, -inf,\
-    \ n) + _k_multiple_between(0, sup, n) - 1;\n    else return _k_multiple_between(inf,\
-    \ sup, n);\n}\n\n// O(1)\n// where inf <= sup\n// return the number of nk + r\
-    \ betweem [inf, sup] (where k is integer)\nll k_multiple_between(ll inf, ll sup,\
-    \ ll n, ll r) { return k_multiple_between(inf - r, sup - r, n); }\n\n};  // namespace\
+    \ ll k) {\n    if(inf > sup) return 0;\n    if(inf <= 0 && sup <= 0) return _k_multiple_between(-sup,\
+    \ -inf, k);\n    else if(inf <= 0 && sup >= 0) return _k_multiple_between(0, -inf,\
+    \ k) + _k_multiple_between(0, sup, k) - 1;\n    else return _k_multiple_between(inf,\
+    \ sup, k);\n}\n\n// O(1)\n// where inf <= sup\n// return the number of nk + r\
+    \ betweem [inf, sup] (where n is integer)\nll k_multiple_between(ll inf, ll sup,\
+    \ ll k, ll r) { return k_multiple_between(inf - r, sup - r, k); }\n\n};  // namespace\
     \ slephy_k_multiple\nusing slephy_k_multiple::k_multiple_between;\n"
   dependsOn:
   - lib/core/core.hpp
   isVerificationFile: false
   path: lib/math/k_multiple.hpp
   requiredBy: []
-  timestamp: '2025-08-03 09:18:24+09:00'
+  timestamp: '2025-08-04 16:08:06+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: lib/math/k_multiple.hpp
