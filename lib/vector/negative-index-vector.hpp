@@ -22,12 +22,12 @@ template <class T> class Nvector : public vector<T> {
 
 public:
     using vector<T>::vector;
-    vector<T>::reference operator[](int i) {
+    typename vector<T>::reference operator[](int i) {
         check_index(i);
         if(i < 0) return vector<T>::operator[]((int)this->size() + i);
         else return vector<T>::operator[](i);
     }
-    vector<T>::const_reference operator[](int i) const {
+    typename vector<T>::const_reference operator[](int i) const {
         check_index(i);
         if(i < 0) return vector<T>::operator[]((int)this->size() + i);
         else return vector<T>::operator[](i);
